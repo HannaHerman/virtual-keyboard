@@ -1,0 +1,372 @@
+body {
+	background: #f2f2f2;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+}
+textarea {
+	width: 95vw;
+	height: 30vh;
+}
+h1 {
+	font-family: sans-serif;
+}
+p {
+	font-family: sans-serif;
+	font-size: 18px;
+}
+
+.keyboard {
+	margin: 0 auto;
+	max-width: 700px;
+	position: fixed;
+	bottom: 10vh;
+	left: 20vw;
+	transition: 0.4s;
+	-webkit-transition: 0.4s;
+	-moz-transition: 0.4s;
+	-ms-transition: 0.4s;
+	-o-transition: 0.4s;
+}
+.keyboard.hidden {
+	position: fixed;
+	bottom: -100%;
+	transition: 0.4s;
+	-webkit-transition: 0.4s;
+	-moz-transition: 0.4s;
+	-ms-transition: 0.4s;
+	-o-transition: 0.4s;
+}
+.keyboard__key {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	flex: 1;
+	float: left;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border-radius: 4px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	color: white;
+	-webkit-user-select: none;
+	font-size: 14px;
+	text-align: center;
+	line-height: 34px;
+	background: rgba(40, 40, 40, 1);
+	box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+	margin-top: -2px;
+	font-family: Arial;
+}
+div[data-row="1"] .keyboard__key {
+	width: 47.7px;
+}
+.keyboard__key:hover {
+	background: #0099cc;
+	cursor: pointer;
+	-webkit-transition: 0s ease-in-out 0s;
+	box-shadow: 0px 0px 10px #0099cc;
+}
+.keyboard__key .active::after {
+	bottom: 3px;
+	box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.5), 0px 10px 8px rgba(0, 0, 0, 0.3),
+		0px 1px 4px rgba(255, 255, 255, 0.5);
+}
+.keyboard__key.active {
+	line-height: 35px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	background: #00b2ed;
+	top: 1px;
+	-webkit-transition: 0s ease-in-out 0s;
+}
+.keyboard__key:active {
+	line-height: 35px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	background: #00b2ed;
+	top: 1px;
+	-webkit-transition: 0s ease-in-out 0s;
+}
+
+.keyboard__key::after {
+	content: "";
+	position: absolute;
+	border-radius: 4px;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 4px;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	box-shadow: inset 0px -1px 1px rgba(255, 255, 255, 0.5), 0px 10px 8px rgba(0, 0, 0, 0.3);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		from(rgba(255, 255, 255, 0)),
+		to(rgba(255, 255, 255, 0.4))
+	);
+}
+.keyboard__key::before {
+	content: "";
+	position: absolute;
+	border-radius: 4px;
+	left: 1px;
+	top: 1px;
+	right: 1px;
+	bottom: 1px;
+}
+#keyboard {
+	width: 640px;
+	height: 200px;
+	position: relative;
+	z-index: 100;
+	top: 10px;
+}
+.smallfont {
+	font-size: 14px;
+}
+
+div[data-code="Tab"] {
+	width: 80px;
+}
+div[data-code="CapsLock"] {
+	width: 91px;
+}
+div[data-code="Enter"] {
+	width: 97px;
+}
+div[data-code="ShiftLeft"] {
+	width: 96px;
+}
+div[data-code="ShiftRight"] {
+	width: 92px;
+}
+div[data-code="ControlRight"] {
+	width: 50px;
+}
+div[data-code="ControlLeft"] {
+	width: 50px;
+}
+div[data-code="Space"] {
+	width: 276px;
+}
+div[data-code="AltLeft"] {
+	width: 50px;
+}
+div[data-code="Hide"] {
+	width: 50px;
+}
+div[data-code="Backspace"] {
+	width: 108px;
+}
+div[data-code="Microphone"] {
+	width: 40px;
+	background: url("../assets/microphone.png"), rgba(40, 40, 40, 1);
+	color: white;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+div[data-code="Microphone"].active {
+	background: url("../assets/microphone.png"), #0099cc;
+	box-shadow: 0px 0px 10px #0099cc;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+div[data-code="Microphone"]:hover {
+	background: url("../assets/microphone.png"), #0099cc;
+	box-shadow: 0px 0px 10px #0099cc;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+div[data-code="Sound"] {
+	width: 50px;
+}
+
+.letter {
+	width: 100%;
+	padding-right: 10px;
+	text-align: center;
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transform: translateX(0);
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform-origin: center;
+}
+
+.sub {
+	width: 100%;
+	color: #68688a;
+	text-align: left;
+	padding-left: 10px;
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+}
+
+.sub.sub-active:not(:empty) {
+	color: white;
+	font-size: 14px;
+}
+
+.sub.sub-active:not(:empty) ~ .letter.sub-inactive {
+	color: #68688a;
+	font-size: 16px;
+	text-align: center;
+	padding-right: 10px;
+	width: 50%;
+	transform-origin: center;
+	transform: translateX(20px);
+	-webkit-transform: translateX(20px);
+	-moz-transform: translateX(20px);
+	-ms-transform: translateX(20px);
+	-o-transform: translateX(20px);
+}
+
+@keyframes fadeInOut {
+	0% {
+		opacity: 0.5;
+		transform: scale(0.8);
+		-webkit-transform: scale(0.8);
+		-moz-transform: scale(0.8);
+		-ms-transform: scale(0.8);
+		-o-transform: scale(0.8);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.5);
+		-webkit-transform: scale(1.5);
+		-moz-transform: scale(1.5);
+		-ms-transform: scale(1.5);
+		-o-transform: scale(1.5);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(2.5);
+		-webkit-transform: scale(2.5);
+		-moz-transform: scale(2.5);
+		-ms-transform: scale(2.5);
+		-o-transform: scale(2.5);
+	}
+}
+[data-fn="true"].active {
+	transform: translateY(1px);
+	-webkit-transform: translateY(1px);
+	-moz-transform: translateY(1px);
+	-ms-transform: translateY(1px);
+	-o-transform: translateY(1px);
+	background-color: #00b2ed;
+}
+
+[data-code="Sound"].active {
+	transform: translateY(1px);
+	-webkit-transform: translateY(1px);
+	-moz-transform: translateY(1px);
+	-ms-transform: translateY(1px);
+	-o-transform: translateY(1px);
+	background-color: #00b2ed;
+}
+@media all and (max-width: 1000px) {
+	.keyboard {
+		left: 14vw;
+	}
+}
+
+@media all and (max-width: 880px) {
+	.keyboard {
+		left: 6vw;
+	}
+}
+@media all and (max-width: 780px) {
+	.keyboard {
+		left: 3vw;
+	}
+}
+@media all and (max-width: 730px) {
+	.keyboard {
+		left: 0;
+	}
+}
+@media all and (max-width: 695px) {
+	.keyboard {
+		max-width: 624px;
+	}
+	.keyboard__key {
+		width: 31px;
+	}
+	div[data-row="1"] .keyboard__key {
+		width: 38.7px;
+	}
+	.sub {
+		margin-right: 4px;
+	}
+	div[data-code="CapsLock"] {
+		width: 87px;
+	}
+	div[data-code="ShiftLeft"] {
+		width: 92px;
+	}
+	div[data-code="Space"] {
+		width: 200px;
+	}
+	div[data-code="ControlRight"] {
+		width: 59px;
+	}
+	div[data-code="Backspace"] {
+		width: 104px;
+	}
+	div[data-row="1"] .keyboard__key[data-code="Delete"] {
+		width: 53px;
+	}
+}
+@media all and (max-width: 585px) {
+	.keyboard {
+		max-width: 495px;
+	}
+	div[data-row="1"] .keyboard__key {
+		width: 30.7px;
+	}
+	div[data-code="Tab"] {
+		width: 50px;
+	}
+	.keyboard__key {
+		width: 25px;
+	}
+	div[data-code="Backspace"] {
+		width: 102px;
+	}
+	div[data-code="CapsLock"] {
+		width: 70px;
+	}
+	div[data-code="Enter"] {
+		width: 82px;
+	}
+	div[data-code="ShiftLeft"] {
+		width: 60px;
+	}
+	div[data-code="Win"] {
+		width: 35px;
+	}
+	div[data-code="Space"] {
+		width: 123px;
+	}
+	div[data-code="ControlLeft"] {
+		width: 38px;
+	}
+	div[data-code="ControlRight"] {
+		width: 63px;
+	}
+}
